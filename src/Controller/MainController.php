@@ -39,4 +39,12 @@ class MainController extends AbstractController
 
         return new Response('<html><head><title>Add-page</title></head><body>Обьект добавлен!</body></html>');
     }
+
+    /**
+     * @Route("/show-page/{id}", name="showPage")
+     */
+    public function showPage($id)
+    {
+        dd($id);
+    }
 }

@@ -45,6 +45,12 @@ class MainController extends AbstractController
      */
     public function showPage(Page $page)
     {
-        dd($page);
+//        return $this->render('main/page.html.twig', [
+//            'page' => $page
+//        ]);
+
+        return $this->render('main/page.html.twig', [
+            'page' => $page
+        ]);
     }
 }

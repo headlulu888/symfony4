@@ -43,17 +43,8 @@ class MainController extends AbstractController
     /**
      * @Route("/show-page/{id}", name="showPage")
      */
-    public function showPage($id, EntityManagerInterface $manager)
+    public function showPage(Page $page)
     {
-        // dd($id);
-        $repository = $manager->getRepository(Page::class);
-
-        $page = $repository->findOneBy(['id' => $id]);
-
-        if (!$page) {
-            throw $this->createNotFoundException('Такой страницы не найдено с id = "%s"' . $id);
-        }
-
         dd($page);
     }
 }

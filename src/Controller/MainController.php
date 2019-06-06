@@ -62,4 +62,15 @@ class MainController extends AbstractController
 
         return new Response('<html><head><title>Add-page</title></head><body>Обьект обновлен!</body></html>');
     }
+
+    /**
+     * @Route("/delete-page/{id}", name="deletePage")
+     */
+    public function deletePage(Page $page, EntityManagerInterface $manager)
+    {
+        $manager->remove($page);
+        $manager->flush();
+
+        return new Response('<html><head><title>Add-page</title></head><body>Обьект удален!</body></html>');
+    }
 }

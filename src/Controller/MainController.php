@@ -45,12 +45,21 @@ class MainController extends AbstractController
      */
     public function showPage(Page $page)
     {
-//        return $this->render('main/page.html.twig', [
-//            'page' => $page
-//        ]);
-
         return $this->render('main/page.html.twig', [
             'page' => $page
         ]);
+    }
+
+    /**
+     * @Route("/edit-page/{id}", name="editPage")
+     */
+    public function editPage(Page $page, EntityManagerInterface $manager)
+    {
+        $page->setTitle('Обновленный заголовок!');
+        $page->setPublish(false);
+
+        $manager->flush();
+
+        return new Response('<html><head><title>Add-page</title></head><body>Обьект обновлен!</body></html>');
     }
 }

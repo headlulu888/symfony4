@@ -5,8 +5,13 @@
     <title>Test twig</title>
 </head>
 <body>
-<div>
-    {{ keys.gg2 }}
-</div>
+<h1><b>Список страниц сайта!</b></h1>
+
+{% for page in pages %}
+    <h3>{{ page.title }}</h3>
+    <p>{{ page.content }}</p>
+    <hr>
+{% endfor %}
+
 </body>
 </html>

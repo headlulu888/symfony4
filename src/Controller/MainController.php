@@ -88,10 +88,14 @@ class MainController extends AbstractController
      */
     public function testTwig()
     {
-        $tmp = ['gg1' => 'param1', 'gg2' => 'param2'];
+        $pages = [
+            ['title' => 'Заголовок страницы1', 'content' => 'Контент страницы1'],
+            ['title' => 'Заголовок страницы2', 'content' => 'Контент страницы2'],
+            ['title' => 'Заголовок страницы3', 'content' => 'Контент страницы3']
+        ];
 
         return $this->render('test/test..html.twig', [
-            'keys' => $tmp
+            'pages' => $pages
         ]);
     }
 }

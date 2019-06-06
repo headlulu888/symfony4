@@ -2,6 +2,16 @@
 
 {% block title %}My twig page{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+        p {
+            color: red;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
 
     <h1><b>Список страниц сайта!</b></h1>
@@ -12,14 +22,6 @@
         <hr>
     {% endfor %}
 
-{% endblock %}
+    {% include('test/part.html.twig') %}
 
-{% block stylesheets %}
-    {{ parent() }}
-
-    <style>
-        p {
-            color: red;
-        }
-    </style>
 {% endblock %}

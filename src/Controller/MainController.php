@@ -82,4 +82,16 @@ class MainController extends AbstractController
         $pages = $manager->getRepository(Page::class)->findBy(['id' => 5]);
         dd($pages);
     }
+
+    /**
+     * @Route("/test-twig", name="testTwig")
+     */
+    public function testTwig()
+    {
+        $tmp = ['gg1' => 'param1', 'gg2' => 'param2'];
+
+        return $this->render('test/test..html.twig', [
+            'keys' => $tmp
+        ]);
+    }
 }

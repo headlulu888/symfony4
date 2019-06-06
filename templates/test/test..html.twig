@@ -7,6 +7,8 @@
 <body>
 <h1><b>Список страниц сайта!</b></h1>
 
+{{ dump(pages) }}
+
 {% for page in pages %}
     <h3>{{ page.title }}</h3>
     <p>{{ page.content }}</p>

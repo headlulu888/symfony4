@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Test twig</title>
-</head>
-<body>
-<h1><b>Список страниц сайта!</b></h1>
+{% extends 'base.html.twig' %}
 
-{{ dump(pages) }}
+{% block title %}My twig page{% endblock %}
 
-{% for page in pages %}
-    <h3>{{ page.title }}</h3>
-    <p>{{ page.content }}</p>
-    <hr>
-{% endfor %}
+{% block body %}
 
-</body>
-</html>
+    <h1><b>Список страниц сайта!</b></h1>
+
+    {% for page in pages %}
+        <h3>{{ page.title }}</h3>
+        <p>{{ page.content }}</p>
+        <hr>
+    {% endfor %}
+
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        p {
+            color: red;
+        }
+    </style>
+{% endblock %}

@@ -6,15 +6,25 @@
     {{ parent() }}
 
     <style>
-        p {
-            color: red;
-        }
+        /*p {*/
+            /*color: red;*/
+        /*}*/
     </style>
 {% endblock %}
 
 {% block body %}
 
     <h1><b>Список страниц сайта!</b></h1>
+
+    <p>Температура окружающего воздуха {{ temp }}</p>
+
+    {% if temp == 31 %}
+        Success!
+    {% else %}
+        Warning!
+    {% endif %}
+
+    {{ tmp ? 'Условие выполнено!' : 'Условие не выполнено(' }}
 
     {% for page in pages %}
         <h3>{{ page.title }}</h3>

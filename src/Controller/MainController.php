@@ -94,8 +94,13 @@ class MainController extends AbstractController
             ['title' => 'Заголовок страницы3', 'content' => 'Контент страницы3']
         ];
 
+        $temperature = 30;
+        $tmp = 15;
+
         return $this->render('test/test..html.twig', [
-            'pages' => $pages
+            'pages' => $pages,
+            'temp' => $temperature,
+            'tmp' => $tmp
         ]);
     }
 }

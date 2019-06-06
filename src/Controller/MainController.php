@@ -73,4 +73,13 @@ class MainController extends AbstractController
 
         return new Response('<html><head><title>Add-page</title></head><body>Обьект удален!</body></html>');
     }
+
+    /**
+     * @Route("/index-page", name="indexPage")
+     */
+    public function indexPage(EntityManagerInterface $manager)
+    {
+        $pages = $manager->getRepository(Page::class)->findBy(['id' => 5]);
+        dd($pages);
+    }
 }

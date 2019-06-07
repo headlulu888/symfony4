@@ -24,13 +24,6 @@
         Warning!
     {% endif %}
 
-    {#Проверка на пустоту#}
-    {#{% if pages %}#}
-        {#{{ pages.0.title }}#}
-    {#{% endif %}#}
-
-    {#{{ pages.0.title | default('nothing')}}#}
-
     {{ today|date("d-m-Y H:i:s") }}
 
     {% for page in pages %}
@@ -38,6 +31,9 @@
         <p>{{ page.content }}</p>
         <hr>
     {% endfor %}
+
+    <a href="{{ path('main') }}">Link to main page</a><br>
+    <a href="{{ path('showPage', {'id': 3}) }}">Show page</a>
 
     {% include('test/part.html.twig') %}
 

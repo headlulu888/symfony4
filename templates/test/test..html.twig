@@ -26,6 +26,10 @@
 
     {{ tmp ? 'Условие выполнено!' : 'Условие не выполнено(' }}
 
+    {#{{ tmp | round }}#}
+
+    {{ tmp|round(2, 'floor') }}
+
     {% for page in pages %}
         <h3>{{ page.title }}</h3>
         <p>{{ page.content }}</p>

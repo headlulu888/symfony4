@@ -95,7 +95,7 @@ class MainController extends AbstractController
         ];
 
         $temperature = 30;
-        $tmp = 15;
+        $tmp = 15.12321;
 
         return $this->render('test/test..html.twig', [
             'pages' => $pages,

@@ -105,4 +105,12 @@ class MainController extends AbstractController
             'today' => $today
         ]);
     }
+
+    /**
+     * @Route("/form", name="testForm")
+     */
+    public function testForm()
+    {
+        return $this->render('test/form.html.twig');
+    }
 }

@@ -7,6 +7,7 @@ use App\Form\TestFormType;
 use App\Services\TestService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -109,10 +110,19 @@ class MainController extends AbstractController
     /**
      * @Route("/form", name="testForm")
      */
-    public function testForm()
+    public function testForm(Request $request)
     {
         $form = $this->createForm(TestFormType::class);
-//        dump($form->createView());
+
+        $form->handleRequest($request);
+
+        $data = $form->getData();
+
+        if($form->isSubmitted() && $form->isValid()) {
+            dump($data['title']);
+        }
+
+
         return $this->render('test/form.html.twig', [
             'form' => $form->createView()
         ]);

@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Page;
+use App\Form\TestFormType;
 use App\Services\TestService;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -111,6 +111,10 @@ class MainController extends AbstractController
      */
     public function testForm()
     {
-        return $this->render('test/form.html.twig');
+        $form = $this->createForm(TestFormType::class);
+//        dump($form->createView());
+        return $this->render('test/form.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }

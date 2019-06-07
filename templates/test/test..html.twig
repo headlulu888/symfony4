@@ -24,11 +24,12 @@
         Warning!
     {% endif %}
 
-    {{ tmp ? 'Условие выполнено!' : 'Условие не выполнено(' }}
+    {#Проверка на пустоту#}
+    {#{% if pages %}#}
+        {#{{ pages.0.title }}#}
+    {#{% endif %}#}
 
-    {#{{ tmp | round }}#}
-
-    {{ tmp|round(2, 'floor') }}
+    {{ pages.0.title | default('nothing')}}
 
     {% for page in pages %}
         <h3>{{ page.title }}</h3>

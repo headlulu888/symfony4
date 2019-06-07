@@ -89,9 +89,9 @@ class MainController extends AbstractController
     public function testTwig()
     {
         $pages = [
-            ['title' => 'Заголовок страницы1', 'content' => 'Контент страницы1'],
-            ['title' => 'Заголовок страницы2', 'content' => 'Контент страницы2'],
-            ['title' => 'Заголовок страницы3', 'content' => 'Контент страницы3']
+//            ['title' => 'Заголовок страницы1', 'content' => 'Контент страницы1'],
+//            ['title' => 'Заголовок страницы2', 'content' => 'Контент страницы2'],
+//            ['title' => 'Заголовок страницы3', 'content' => 'Контент страницы3']
         ];
 
         $temperature = 30;

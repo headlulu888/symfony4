@@ -89,18 +89,20 @@ class MainController extends AbstractController
     public function testTwig()
     {
         $pages = [
-//            ['title' => 'Заголовок страницы1', 'content' => 'Контент страницы1'],
-//            ['title' => 'Заголовок страницы2', 'content' => 'Контент страницы2'],
-//            ['title' => 'Заголовок страницы3', 'content' => 'Контент страницы3']
+            ['title' => 'Заголовок страницы1', 'content' => 'Контент страницы1'],
+            ['title' => 'Заголовок страницы2', 'content' => 'Контент страницы2'],
+            ['title' => 'Заголовок страницы3', 'content' => 'Контент страницы3']
         ];
 
+        $today = new \DateTime();
         $temperature = 30;
         $tmp = 15.12321;
 
         return $this->render('test/test..html.twig', [
             'pages' => $pages,
             'temp' => $temperature,
-            'tmp' => $tmp
+            'tmp' => $tmp,
+            'today' => $today
         ]);
     }
 }

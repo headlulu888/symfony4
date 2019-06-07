@@ -110,16 +110,19 @@ class MainController extends AbstractController
     /**
      * @Route("/form", name="testForm")
      */
-    public function testForm(Request $request)
+    public function testForm(Request $request, EntityManagerInterface $manager)
     {
         $form = $this->createForm(TestFormType::class);
-
         $form->handleRequest($request);
 
-        $data = $form->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $page = $form->getData();
+            // $page->setPublish(false);
+            $manager->persist($page);
+            $manager->flush();
 
-        dump($data);
-
+            return $this->redirectToRoute('testForm');
+        }
 
         return $this->render('test/form.html.twig', [
             'form' => $form->createView()

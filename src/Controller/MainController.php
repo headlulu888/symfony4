@@ -118,9 +118,7 @@ class MainController extends AbstractController
 
         $data = $form->getData();
 
-        if($form->isSubmitted() && $form->isValid()) {
-            dump($data['title']);
-        }
+        dump($data);
 
 
         return $this->render('test/form.html.twig', [

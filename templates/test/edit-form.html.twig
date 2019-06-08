@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My form page{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="button">Сохранить</button>
+    {{ form_end(form) }}
+
+{% endblock %}

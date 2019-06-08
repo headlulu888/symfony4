@@ -130,4 +130,24 @@ class MainController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/edit-form/{id}", name="editForm")
+     */
+    public function editForm(Request $request, EntityManagerInterface $manager, Page $page)
+    {
+        $form = $this->createForm(TestFormType::class, $page);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->flush();
+            $this->addFlash('success', 'Обьект обновлен в БД');
+
+            return $this->redirectToRoute('editForm', ['id' => $page->getId()]);
+        }
+
+        return $this->render('test/edit-form.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 }

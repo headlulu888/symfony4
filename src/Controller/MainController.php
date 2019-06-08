@@ -121,6 +121,8 @@ class MainController extends AbstractController
             $manager->persist($page);
             $manager->flush();
 
+            $this->addFlash('success', 'Обьект доавлен в БД');
+
             return $this->redirectToRoute('testForm');
         }
 

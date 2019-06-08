@@ -21,6 +21,7 @@ class Page
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank(message="Поле не должно быть пустое!!!")
+     * @Assert\Email(message="Формат должен быть email")
      */
     private $title;
 

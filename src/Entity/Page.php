@@ -39,6 +39,7 @@ class Page
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="page")
+     * @ORM\OrderBy({"id" = "DESC"})
      */
     private $comments;
 

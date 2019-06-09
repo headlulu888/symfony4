@@ -12,7 +12,7 @@
     <div>
         {{ page.content }}
         <hr>
-        {% for comment in comments %}
+        {% for comment in page.comments %}
             <div class="box">
                 {{ comment.content }}
             </div>

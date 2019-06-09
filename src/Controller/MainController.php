@@ -174,19 +174,10 @@ class MainController extends AbstractController
      * @param Page $page
      * @return Response
      */
-    public function showComment(Page $page, EntityManagerInterface $manager)
+    public function showComment(Page $page)
     {
-//        $comments = $manager->getRepository(Comment::class)->findBy([
-//            'page' => $page
-//        ]);
-
-        $comments = $page->getComments();
-
-        // dump($comments);
-
         return $this->render('test/page..html.twig', [
-            'page' => $page,
-            'comments' => $comments
+            'page' => $page
         ]);
     }
 }

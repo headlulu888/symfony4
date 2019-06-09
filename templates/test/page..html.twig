@@ -11,6 +11,11 @@
     <h1>{{ page.title }}</h1>
     <div>
         {{ page.content }}
+        <br>
+        {% if not page.comments.isEmpty %}
+            <span>Содержимое первого коментария - </span>
+            {{ page.comments[0].content }}
+        {% endif %}
         <hr>
         {% for comment in page.comments %}
             <div class="box">

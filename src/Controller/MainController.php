@@ -176,9 +176,11 @@ class MainController extends AbstractController
      */
     public function showComment(Page $page, EntityManagerInterface $manager)
     {
-        $comments = $manager->getRepository(Comment::class)->findBy([
-            'page' => $page
-        ]);
+//        $comments = $manager->getRepository(Comment::class)->findBy([
+//            'page' => $page
+//        ]);
+
+        $comments = $page->getComments();
 
         // dump($comments);
 

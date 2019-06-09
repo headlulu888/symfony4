@@ -168,4 +168,23 @@ class MainController extends AbstractController
 
         return new Response('<html><body>Коментарий добавлен!</body></html>');
     }
+
+    /**
+     * @Route("/show-comment/{id}", name="showComment")
+     * @param Page $page
+     * @return Response
+     */
+    public function showComment(Page $page, EntityManagerInterface $manager)
+    {
+        $comments = $manager->getRepository(Comment::class)->findBy([
+            'page' => $page
+        ]);
+
+        // dump($comments);
+
+        return $this->render('test/page..html.twig', [
+            'page' => $page,
+            'comments' => $comments
+        ]);
+    }
 }

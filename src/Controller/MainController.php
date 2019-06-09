@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Page;
 use App\Form\TestFormType;
 use App\Services\TestService;
@@ -149,5 +150,22 @@ class MainController extends AbstractController
         return $this->render('test/edit-form.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/add-comment", name="addComment")
+     */
+    public function addComment(EntityManagerInterface $manager)
+    {
+        $page = $manager->getRepository(Page::class)->findOneBy(['id' => '7']);
+
+        $comment = new Comment();
+        $comment->setContent('Содержимое коментария 2 !');
+        $comment->setPage($page);
+
+        $manager->persist($comment);
+        $manager->flush();
+
+        return new Response('<html><body>Коментарий добавлен!</body></html>');
     }
 }

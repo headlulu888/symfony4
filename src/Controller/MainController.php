@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Page;
 use App\Entity\Tag;
+use App\Entity\User;
 use App\Form\RegisterUserType;
 use App\Form\TestFormType;
 use App\Services\TestService;
@@ -205,11 +206,15 @@ class MainController extends AbstractController
      */
     public function register(Request $request)
     {
-        $form = $this->createForm(RegisterUserType::class);
+        $user = new User();
+
+
+        $form = $this->createForm(RegisterUserType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             // регистрация пользователя!
+            dump($user);
         }
 
         return $this->render("main/register.html.twig", [

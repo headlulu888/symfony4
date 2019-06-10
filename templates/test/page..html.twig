@@ -12,6 +12,14 @@
     <div>
         {{ page.content }}
         <br>
+
+        <div>
+        {% for tag in page.tags %}
+            <span style="background-color: #5eb5e0; color: #fff;">{{ tag.name }}</span>
+        {% endfor %}
+        </div>
+
+        <br>
         {% if not page.comments.isEmpty %}
             <span>Содержимое первого коментария - </span>
             {{ page.comments[0].content }}

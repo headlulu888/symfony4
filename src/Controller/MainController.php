@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Entity\Page;
+use App\Entity\Tag;
 use App\Form\TestFormType;
 use App\Services\TestService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -179,5 +180,20 @@ class MainController extends AbstractController
         return $this->render('test/page..html.twig', [
             'page' => $page
         ]);
+    }
+
+    /**
+     * @Route("/add-tag-to-page/{pageId}/{tagId}", name="addTagToPage")
+     * @param Page $page
+     * @param Tag $tag
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
+    public function addTagToPage(Page $pageId, Tag $tagId, EntityManagerInterface $manager)
+    {
+        $pageId->addTag($tagId);
+        $manager->flush();
+
+        return new Response('<html><body>Тег добавлен к странице!</body></html>');
     }
 }

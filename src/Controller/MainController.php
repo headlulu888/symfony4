@@ -184,8 +184,8 @@ class MainController extends AbstractController
 
     /**
      * @Route("/add-tag-to-page/{pageId}/{tagId}", name="addTagToPage")
-     * @param Page $page
-     * @param Tag $tag
+     * @param Page $pageId
+     * @param Tag $tagId
      * @param EntityManagerInterface $manager
      * @return Response
      */
@@ -195,5 +195,13 @@ class MainController extends AbstractController
         $manager->flush();
 
         return new Response('<html><body>Тег добавлен к странице!</body></html>');
+    }
+
+    /**
+     * @Route("/register", name="register")
+     */
+    public function register()
+    {
+        return $this->render("main/register.html.twig");
     }
 }

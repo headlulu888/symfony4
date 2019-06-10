@@ -17,8 +17,8 @@
             {{ page.comments[0].content }}
         {% endif %}
         <hr>
-        {% for comment in page.comments %}
-            <div class="box">
+        {% for comment in page.noDeletedComments %}
+            <div class="box" style="border: 1px solid #ccc; padding: 1rem; margin-top: 1rem;">
                 {{ comment.content }}
             </div>
         {% endfor %}

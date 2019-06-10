@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -99,6 +100,15 @@ class Page
     public function getComments(): Collection
     {
         return $this->comments;
+    }
+
+    public function getNoDeletedComments(): Collection
+    {
+        $criteria = Criteria::create()
+            ->andWhere(Criteria::expr()->eq('isDeleted', false))
+            ->orderBy(['id' => 'DESC']);
+
+        return $this->comments->matching($criteria);
     }
 
     public function addComment(Comment $comment): self

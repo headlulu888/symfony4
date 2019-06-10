@@ -11,6 +11,9 @@
 <div class="example-wrapper">
     <h1>Регистрация на сайте!</h1>
 
-    Здесь будет форма регистрации!
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn button is-link">Нажать</button>
+    {{ form_end(form) }}
 </div>
 {% endblock %}

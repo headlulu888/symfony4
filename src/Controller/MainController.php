@@ -14,6 +14,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class MainController extends AbstractController
 {
@@ -202,19 +204,26 @@ class MainController extends AbstractController
     /**
      * @Route("/register", name="register")
      * @param Request $request
+     * @param PasswordEncoderInterface $encoder
+     * @param EntityManagerInterface $manager
      * @return Response
      */
-    public function register(Request $request)
+    public function register(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $manager)
     {
         $user = new User();
-
 
         $form = $this->createForm(RegisterUserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
             // регистрация пользователя!
-            dump($user);
+            $password = $encoder->encodePassword($user, $user->getPlainPassword());
+
+            $user->setPassword($password);
+            $user->setRoles(['ROLE_USER']);
+
+            $manager->persist($user);
+            $manager->flush();
         }
 
         return $this->render("main/register.html.twig", [
